@@ -5,4 +5,4 @@ Models:
   Pizza - pizza order info; 
   Cart - the total info about all orders that customer have made;
   Manager - a consultant, who will contact with customer;
-  Chain - the specified chain of "PizzaTime" restaurant in town.
+  Restaurant_Branch - the specified restaurant branch of "PizzaTime" in town.
