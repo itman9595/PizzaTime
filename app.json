@@ -1,0 +1,22 @@
+{
+  "name": "PizzaTime",
+  "description": "API for chain of restaurants 'PizzaTime' in Almaty",
+  "image": "heroku/python",
+  "repository": "git@github.com:itman9595/PizzaTime.git",
+  "keywords": ["python", "django", "rest_framework"],
+  "addons": [ "heroku-postgresql" ],
+  "env": {
+    "SECRET_KEY": {
+      "description": "The secret key for the Django application.",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block body %}
+
+    {% if latest_pizza_list %}
+        <ul>
+            {% for pizza in latest_pizza_list %}
+                <li><a href="">{{ pizza.Name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No pizza is available at the moment.</p>
+    {% endif %}
+
+{% endblock %}
