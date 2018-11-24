@@ -80,7 +80,21 @@ class Cart(models.Model):
     was_published_recently.boolean = True
     was_published_recently.short_description = 'Ordered recently?'
 
+class Pizza_List(models.Model):
+    Created_At = models.DateTimeField('date created')
+    def __str__(self):
+        return "List #%d" % (self.id)
+
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.Created_At <= now
+
+    was_published_recently.admin_order_field = 'Created_At'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Created recently?'
+
 class Pizza(models.Model):
+    List_ID = models.ForeignKey(Pizza_List, on_delete=models.CASCADE, default=0)
     Name = models.CharField(max_length=200)
     Filling = models.CharField(max_length=500)
     LITTLE_SIZE = 'L'
@@ -99,3 +113,15 @@ class Pizza(models.Model):
     Price = models.IntegerField()
     Discount = models.IntegerField()
     Cart_ID = models.ForeignKey(Cart, on_delete=models.CASCADE, default=0)
+    Created_At = models.DateTimeField('date created', default=timezone.now())
+
+    def __str__(self):
+        return self.Name
+
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.Created_At <= now
+
+    was_published_recently.admin_order_field = 'Created_At'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Created recently?'
