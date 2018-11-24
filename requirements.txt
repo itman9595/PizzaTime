@@ -1,6 +1,0 @@
-django
-gunicorn
-django-heroku
-djangorestframework
-psycopg2-binary
-dj-database-url
